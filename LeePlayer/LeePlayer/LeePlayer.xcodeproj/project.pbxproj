@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E64ED6324C5671C001765BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED6224C5671C001765BE /* AppDelegate.m */; };
+		9E64ED6624C5671C001765BE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED6524C5671C001765BE /* SceneDelegate.m */; };
+		9E64ED6924C5671C001765BE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED6824C5671C001765BE /* ViewController.m */; };
+		9E64ED6C24C5671C001765BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E64ED6A24C5671C001765BE /* Main.storyboard */; };
+		9E64ED6E24C56721001765BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E64ED6D24C56721001765BE /* Assets.xcassets */; };
+		9E64ED7124C56721001765BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E64ED6F24C56721001765BE /* LaunchScreen.storyboard */; };
+		9E64ED7424C56721001765BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED7324C56721001765BE /* main.m */; };
+		9E64ED7E24C56721001765BE /* LeePlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED7D24C56721001765BE /* LeePlayerTests.m */; };
+		9E64ED8924C56721001765BE /* LeePlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED8824C56721001765BE /* LeePlayerUITests.m */; };
+		9E64ED9724C5693D001765BE /* playerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED9624C5693C001765BE /* playerManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9E64ED7A24C56721001765BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E64ED5624C5671C001765BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E64ED5D24C5671C001765BE;
+			remoteInfo = LeePlayer;
+		};
+		9E64ED8524C56721001765BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E64ED5624C5671C001765BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E64ED5D24C5671C001765BE;
+			remoteInfo = LeePlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9E64ED5E24C5671C001765BE /* LeePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E64ED6124C5671C001765BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9E64ED6224C5671C001765BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9E64ED6424C5671C001765BE /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		9E64ED6524C5671C001765BE /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		9E64ED6724C5671C001765BE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9E64ED6824C5671C001765BE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9E64ED6B24C5671C001765BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9E64ED6D24C56721001765BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9E64ED7024C56721001765BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9E64ED7224C56721001765BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E64ED7324C56721001765BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9E64ED7924C56721001765BE /* LeePlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeePlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E64ED7D24C56721001765BE /* LeePlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeePlayerTests.m; sourceTree = "<group>"; };
+		9E64ED7F24C56721001765BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E64ED8424C56721001765BE /* LeePlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeePlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E64ED8824C56721001765BE /* LeePlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeePlayerUITests.m; sourceTree = "<group>"; };
+		9E64ED8A24C56721001765BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E64ED9624C5693C001765BE /* playerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = playerManager.m; sourceTree = "<group>"; };
+		9E64ED9824C56980001765BE /* playerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = playerManager.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9E64ED5B24C5671C001765BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E64ED7624C56721001765BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E64ED8124C56721001765BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E64ED5524C5671C001765BE = {
+			isa = PBXGroup;
+			children = (
+				9E64ED6024C5671C001765BE /* LeePlayer */,
+				9E64ED7C24C56721001765BE /* LeePlayerTests */,
+				9E64ED8724C56721001765BE /* LeePlayerUITests */,
+				9E64ED5F24C5671C001765BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9E64ED5F24C5671C001765BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E64ED5E24C5671C001765BE /* LeePlayer.app */,
+				9E64ED7924C56721001765BE /* LeePlayerTests.xctest */,
+				9E64ED8424C56721001765BE /* LeePlayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E64ED6024C5671C001765BE /* LeePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9E64ED6124C5671C001765BE /* AppDelegate.h */,
+				9E64ED6224C5671C001765BE /* AppDelegate.m */,
+				9E64ED6424C5671C001765BE /* SceneDelegate.h */,
+				9E64ED6524C5671C001765BE /* SceneDelegate.m */,
+				9E64ED6724C5671C001765BE /* ViewController.h */,
+				9E64ED6824C5671C001765BE /* ViewController.m */,
+				9E64ED6A24C5671C001765BE /* Main.storyboard */,
+				9E64ED6D24C56721001765BE /* Assets.xcassets */,
+				9E64ED6F24C56721001765BE /* LaunchScreen.storyboard */,
+				9E64ED7224C56721001765BE /* Info.plist */,
+				9E64ED7324C56721001765BE /* main.m */,
+				9E64ED9624C5693C001765BE /* playerManager.m */,
+				9E64ED9824C56980001765BE /* playerManager.h */,
+			);
+			path = LeePlayer;
+			sourceTree = "<group>";
+		};
+		9E64ED7C24C56721001765BE /* LeePlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9E64ED7D24C56721001765BE /* LeePlayerTests.m */,
+				9E64ED7F24C56721001765BE /* Info.plist */,
+			);
+			path = LeePlayerTests;
+			sourceTree = "<group>";
+		};
+		9E64ED8724C56721001765BE /* LeePlayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9E64ED8824C56721001765BE /* LeePlayerUITests.m */,
+				9E64ED8A24C56721001765BE /* Info.plist */,
+			);
+			path = LeePlayerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9E64ED5D24C5671C001765BE /* LeePlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E64ED8D24C56721001765BE /* Build configuration list for PBXNativeTarget "LeePlayer" */;
+			buildPhases = (
+				9E64ED5A24C5671C001765BE /* Sources */,
+				9E64ED5B24C5671C001765BE /* Frameworks */,
+				9E64ED5C24C5671C001765BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LeePlayer;
+			productName = LeePlayer;
+			productReference = 9E64ED5E24C5671C001765BE /* LeePlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9E64ED7824C56721001765BE /* LeePlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E64ED9024C56721001765BE /* Build configuration list for PBXNativeTarget "LeePlayerTests" */;
+			buildPhases = (
+				9E64ED7524C56721001765BE /* Sources */,
+				9E64ED7624C56721001765BE /* Frameworks */,
+				9E64ED7724C56721001765BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E64ED7B24C56721001765BE /* PBXTargetDependency */,
+			);
+			name = LeePlayerTests;
+			productName = LeePlayerTests;
+			productReference = 9E64ED7924C56721001765BE /* LeePlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9E64ED8324C56721001765BE /* LeePlayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E64ED9324C56721001765BE /* Build configuration list for PBXNativeTarget "LeePlayerUITests" */;
+			buildPhases = (
+				9E64ED8024C56721001765BE /* Sources */,
+				9E64ED8124C56721001765BE /* Frameworks */,
+				9E64ED8224C56721001765BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9E64ED8624C56721001765BE /* PBXTargetDependency */,
+			);
+			name = LeePlayerUITests;
+			productName = LeePlayerUITests;
+			productReference = 9E64ED8424C56721001765BE /* LeePlayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9E64ED5624C5671C001765BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Lee Li";
+				TargetAttributes = {
+					9E64ED5D24C5671C001765BE = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					9E64ED7824C56721001765BE = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9E64ED5D24C5671C001765BE;
+					};
+					9E64ED8324C56721001765BE = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9E64ED5D24C5671C001765BE;
+					};
+				};
+			};
+			buildConfigurationList = 9E64ED5924C5671C001765BE /* Build configuration list for PBXProject "LeePlayer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9E64ED5524C5671C001765BE;
+			productRefGroup = 9E64ED5F24C5671C001765BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9E64ED5D24C5671C001765BE /* LeePlayer */,
+				9E64ED7824C56721001765BE /* LeePlayerTests */,
+				9E64ED8324C56721001765BE /* LeePlayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9E64ED5C24C5671C001765BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E64ED7124C56721001765BE /* LaunchScreen.storyboard in Resources */,
+				9E64ED6E24C56721001765BE /* Assets.xcassets in Resources */,
+				9E64ED6C24C5671C001765BE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E64ED7724C56721001765BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E64ED8224C56721001765BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9E64ED5A24C5671C001765BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E64ED6924C5671C001765BE /* ViewController.m in Sources */,
+				9E64ED6324C5671C001765BE /* AppDelegate.m in Sources */,
+				9E64ED7424C56721001765BE /* main.m in Sources */,
+				9E64ED9724C5693D001765BE /* playerManager.m in Sources */,
+				9E64ED6624C5671C001765BE /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E64ED7524C56721001765BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E64ED7E24C56721001765BE /* LeePlayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E64ED8024C56721001765BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E64ED8924C56721001765BE /* LeePlayerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9E64ED7B24C56721001765BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E64ED5D24C5671C001765BE /* LeePlayer */;
+			targetProxy = 9E64ED7A24C56721001765BE /* PBXContainerItemProxy */;
+		};
+		9E64ED8624C56721001765BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E64ED5D24C5671C001765BE /* LeePlayer */;
+			targetProxy = 9E64ED8524C56721001765BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9E64ED6A24C5671C001765BE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E64ED6B24C5671C001765BE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9E64ED6F24C56721001765BE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E64ED7024C56721001765BE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9E64ED8B24C56721001765BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9E64ED8C24C56721001765BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9E64ED8E24C56721001765BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				INFOPLIST_FILE = LeePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lee.LeePlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9E64ED8F24C56721001765BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				INFOPLIST_FILE = LeePlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lee.LeePlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9E64ED9124C56721001765BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				INFOPLIST_FILE = LeePlayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lee.LeePlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeePlayer.app/LeePlayer";
+			};
+			name = Debug;
+		};
+		9E64ED9224C56721001765BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				INFOPLIST_FILE = LeePlayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lee.LeePlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LeePlayer.app/LeePlayer";
+			};
+			name = Release;
+		};
+		9E64ED9424C56721001765BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				INFOPLIST_FILE = LeePlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lee.LeePlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LeePlayer;
+			};
+			name = Debug;
+		};
+		9E64ED9524C56721001765BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				INFOPLIST_FILE = LeePlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lee.LeePlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LeePlayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9E64ED5924C5671C001765BE /* Build configuration list for PBXProject "LeePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E64ED8B24C56721001765BE /* Debug */,
+				9E64ED8C24C56721001765BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E64ED8D24C56721001765BE /* Build configuration list for PBXNativeTarget "LeePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E64ED8E24C56721001765BE /* Debug */,
+				9E64ED8F24C56721001765BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E64ED9024C56721001765BE /* Build configuration list for PBXNativeTarget "LeePlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E64ED9124C56721001765BE /* Debug */,
+				9E64ED9224C56721001765BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E64ED9324C56721001765BE /* Build configuration list for PBXNativeTarget "LeePlayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E64ED9424C56721001765BE /* Debug */,
+				9E64ED9524C56721001765BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9E64ED5624C5671C001765BE /* Project object */;
+}
