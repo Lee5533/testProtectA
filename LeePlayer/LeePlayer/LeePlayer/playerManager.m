@@ -348,7 +348,7 @@ static playerManager *defaultManager = nil;
 #pragma mark player manage opration
 - (void)playOrPause
 {
-    NSLog(@"lee playOrPause playerManager\n");
+    NSLog(@"lee playOrPause playerManager,rate:%f\n",self.player.rate);
     if (self.player.rate != .0f) {
         [self.player pause];
     }
