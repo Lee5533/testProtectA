@@ -111,8 +111,50 @@ static playerManager *defaultManager = nil;
                                                  name:AVPlayerItemTimeJumpedNotification
                                                object:self.playerItem];
 
+    [self registerForall];
 }
 
+-(void)registerForall
+{
+    //Screen lock notifications
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
+                                    NULL, // observer
+                                    displayStatusChanged, // callback
+                                    CFSTR("com.apple.iokit.hid.displayStatus"), // event name
+                                    NULL, // object
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+
+
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
+                                    NULL, // observer
+                                    displayStatusChanged, // callback
+                                    CFSTR("com.apple.springboard.lockstate"), // event name
+                                    NULL, // object
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
+                                    NULL, // observer
+                                    displayStatusChanged, // callback
+                                    CFSTR("com.apple.springboard.hasBlankedScreen"), // event name
+                                    NULL, // object
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
+                                    NULL, // observer
+                                    displayStatusChanged, // callback
+                                    CFSTR("com.apple.springboard.lockcomplete"), // event name
+                                    NULL, // object
+                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+
+}
+//call back
+static void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
+{
+    NSLog(@"IN Display status changed");
+    NSLog(@"Darwin notification NAME = %@",name);
+
+
+}
 - (void)removePlayerItemObserver
 {
     /* Stop observing our prior AVPlayerItem, if we have one. */
@@ -201,7 +243,7 @@ static playerManager *defaultManager = nil;
                 [self.pipController startPictureInPicture];
                 NSLog(@"lee AVPlayerStatusReadyToPlay--start pip\n");
                  */
-                                
+                [self.player play];
             }
                 break;
             case AVPlayerStatusFailed:
