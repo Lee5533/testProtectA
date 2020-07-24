@@ -118,7 +118,7 @@ static playerManager *defaultManager = nil;
 {
     //Screen lock notifications
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
-                                    NULL, // observer
+                                    (void *)self, // observer
                                     displayStatusChanged, // callback
                                     CFSTR("com.apple.iokit.hid.displayStatus"), // event name
                                     NULL, // object
@@ -126,21 +126,21 @@ static playerManager *defaultManager = nil;
 
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
-                                    NULL, // observer
+                                    (void *)self, // observer
                                     displayStatusChanged, // callback
                                     CFSTR("com.apple.springboard.lockstate"), // event name
                                     NULL, // object
                                     CFNotificationSuspensionBehaviorDeliverImmediately);
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
-                                    NULL, // observer
+                                    (void *)self, // observer
                                     displayStatusChanged, // callback
                                     CFSTR("com.apple.springboard.hasBlankedScreen"), // event name
                                     NULL, // object
                                     CFNotificationSuspensionBehaviorDeliverImmediately);
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), //center
-                                    NULL, // observer
+                                    (void *)self, // observer
                                     displayStatusChanged, // callback
                                     CFSTR("com.apple.springboard.lockcomplete"), // event name
                                     NULL, // object
@@ -148,12 +148,38 @@ static playerManager *defaultManager = nil;
 
 }
 //call back
-static void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
+void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
 {
+    playerManager *mgr = (__bridge playerManager *)observer;
+//    mgr.bStateLocked
     NSLog(@"IN Display status changed");
     NSLog(@"Darwin notification NAME = %@",name);
+    
+    NSString* lockState = (__bridge NSString*)name;
+//    if ([lockstate isEqualToString:(__bridge  NSString*)kNotificationLock])
+    if([lockState isEqualToString:@"com.apple.springboard.lockcomplete"])
+    {
+        mgr.bStateLocked = YES;
+        NSLog(@"lee lock 锁屏");
+        mgr.playerStateBeforeLocked = mgr.playerState;
+    }
+    else if([lockState isEqualToString:@"com.apple.iokit.hid.displayStatus"])
+    {
+//        if (mgr.bStateLocked) {
+//            mgr.bStateLocked = NO;
+//        }else{
+//            NSLog(@"lee lock 解锁");
+//        }
+        if (mgr.bStateLocked)
+        {
+            NSLog(@"lee lock 解锁");
+        }
+    }
 
 
+}
+-(void)readyToPlay
+{
 }
 - (void)removePlayerItemObserver
 {
@@ -243,7 +269,13 @@ static void displayStatusChanged(CFNotificationCenterRef center, void *observer,
                 [self.pipController startPictureInPicture];
                 NSLog(@"lee AVPlayerStatusReadyToPlay--start pip\n");
                  */
-                [self.player play];
+                NSLog(@"lee AVPlayerStatusReadyToPlay bStateLocked:%d,_playerStateBeforeLocked:%d\n",self.bStateLocked,_playerStateBeforeLocked);
+                if (self.bStateLocked && _playerStateBeforeLocked == AVStatePlaying)
+                {
+                    [self.player play];
+                    self.bStateLocked = NO;
+                }
+                
             }
                 break;
             case AVPlayerStatusFailed:
@@ -292,10 +324,12 @@ static void displayStatusChanged(CFNotificationCenterRef center, void *observer,
         if (newRate == 0.0f)
         {
             status = @"pause";
+            self.playerState = AVStatePaused;
         }
         else
         {
             status = @"play";
+            self.playerState = AVStatePlaying;
         }
         
         NSLog(@"Rate: %.1f -> %.1f",oldRate, newRate);
