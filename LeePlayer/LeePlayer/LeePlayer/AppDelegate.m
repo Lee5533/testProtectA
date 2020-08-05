@@ -49,6 +49,10 @@
 }
 - (void)applicationWillResignActive:(UIApplication *)application{
     NSLog(@"状态** 将要进入后台");
+    
+    CGFloat screenBrightness = [[UIScreen mainScreen] brightness];
+        
+   NSLog(@"lee pipSuspend-application    bvgnsignActive screenBrightness:%f\n",screenBrightness);
     //suspend PIP
     [SharedPlayerManager pipControllerSuspend];
 }
