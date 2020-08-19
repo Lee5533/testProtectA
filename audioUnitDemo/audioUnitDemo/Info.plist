@@ -62,5 +62,11 @@
 	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+    
+    <key>NSPhotoLibraryUsageDescription</key>
+       <string>此 App 需要您的同意才能读取photo</string>
+    
+    <key>NSMicrophoneUsageDescription</key>
+    <string>此 App 需要您的同意才能读取microphone</string>
 </dict>
 </plist>

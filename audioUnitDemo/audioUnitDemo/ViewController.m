@@ -6,22 +6,6 @@
 //  Copyright © 2020 Lee Li. All rights reserved.
 //
 
-//#import "ViewController.h"
-//
-//@interface ViewController ()
-//
-//@end
-//
-//@implementation ViewController
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view.
-//}
-//
-//
-//@end
-
 #import "ViewController.h"
 //#import "AVFoundation.h";
 //#import "AudioUnit.h";
@@ -35,8 +19,8 @@
 
 #define kOutputBus 0
 #define kInputBus 1
-//AudioComponentInstance audioUnit;
-AudioUnit audioUnit;
+AudioComponentInstance audioUnit;
+//AudioUnit audioUnit;
 FILE *file = NULL;
 AVAudioSession *audioSession;
 
@@ -108,7 +92,7 @@ static OSStatus recordingCallback(void *inRefCon,
     OSStatus status;
     ViewController *selfTmp = (__bridge ViewController*)inRefCon;
 //    GSNAudioUnitGraph *THIS=(__bridge GSNAudioUnitGraph*)inRefCon;
-    status = AudioUnitRender(inRefCon,
+    status = AudioUnitRender(audioUnit,
                              ioActionFlags,
                              inTimeStamp,
                              inBusNumber,
@@ -118,14 +102,15 @@ static OSStatus recordingCallback(void *inRefCon,
         NSLog(@"Error %ld", status);
     } else {
         NSLog(@"No Errors!");
-        printf("%d, ",(int)*((SInt16 *)bufferList->mBuffers[0].mData));
+        NSLog(@"data:%x, ",(int)*((SInt16 *)bufferList->mBuffers[0].mData));
     }
 
     // Now, we have the samples we just read sitting in buffers in bufferList
 //     DoStuffWithTheRecordedAudio(bufferList);
-    
-    [selfTmp writePCMData:ioData->mBuffers->mData size:ioData->mBuffers->mDataByteSize];
-//    [THIS writePCMData:ioData->mBuffers->mData size:ioData->mBuffers->mDataByteSize];
+
+//    [selfTmp writePCMData:bufferList size:sizeof(bufferList)];
+    [selfTmp writePCMData:bufferList->mBuffers->mData size:bufferList->mBuffers->mDataByteSize];
+//    [selfTmp writePCMData:ioData->mBuffers->mData size:ioData->mBuffers->mDataByteSize];
     return noErr;
 }
 
@@ -163,7 +148,7 @@ static OSStatus playbackCallback(void *inRefCon,
     
 
     UInt32 flag = 1;
-#if 0
+#if 1
     // Disable IO for recording
     status = AudioUnitSetProperty(audioUnit,
                                   kAudioOutputUnitProperty_EnableIO,
@@ -212,7 +197,8 @@ static OSStatus playbackCallback(void *inRefCon,
     AURenderCallbackStruct callbackStruct;
     
     callbackStruct.inputProc = recordingCallback;
-    callbackStruct.inputProcRefCon = audioUnit;
+//    callbackStruct.inputProcRefCon = audioUnit;//self
+    callbackStruct.inputProcRefCon = (__bridge void * _Nullable)(self);//self
     status = AudioUnitSetProperty(audioUnit,
                                   kAudioOutputUnitProperty_SetInputCallback,
                                   kAudioUnitScope_Global,
@@ -223,7 +209,8 @@ static OSStatus playbackCallback(void *inRefCon,
      
     // Set output callback
     callbackStruct.inputProc = playbackCallback;
-//    callbackStruct.inputProcRefCon = audioUnit;
+    callbackStruct.inputProcRefCon = audioUnit;//self
+    callbackStruct.inputProcRefCon = (__bridge void * _Nullable)(self);
     status = AudioUnitSetProperty(audioUnit,
                                   kAudioUnitProperty_SetRenderCallback,
                                   kAudioUnitScope_Global,
@@ -231,6 +218,14 @@ static OSStatus playbackCallback(void *inRefCon,
                                   &callbackStruct,
                                   sizeof(callbackStruct));
 
+    // Disable buffer allocation for the recorder (optional - do this if we want to pass in our own)
+    flag = 0;
+    status = AudioUnitSetProperty(audioUnit,
+                                  kAudioUnitProperty_ShouldAllocateBuffer,
+                                  kAudioUnitScope_Output,
+                                  kInputBus,
+                                  &flag,
+                                  sizeof(flag));
     // Initialise
     status = AudioUnitInitialize(audioUnit);
 
