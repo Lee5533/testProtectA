@@ -41,7 +41,7 @@
 - (void)sceneWillResignActive:(UIScene *)scene {
     // Called when the scene will move from an active state to an inactive state.
     // This may occur due to temporary interruptions (ex. an incoming phone call).
-//    [SharedPlayerManager pipControllerSuspend];
+    [SharedPlayerManager pipControllerSuspend];
 }
 
 
