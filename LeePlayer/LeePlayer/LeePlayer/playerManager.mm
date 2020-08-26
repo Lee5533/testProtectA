@@ -8,6 +8,34 @@
 
 #import <Foundation/Foundation.h>
 #import "playerManager.h"
+#import "baseSocket.hpp"
+
+#define observerContext(context) static void *context = &context;
+
+/* PlayerItem keys */
+NSString * const LeaStatusKey                 = @"status";
+NSString * const leaPlaybackBufferEmpty       = @"playbackBufferEmpty";
+NSString * const leaPlaybackLikelyToKeepUp    = @"playbackLikelyToKeepUp";
+NSString * const leaPlaybackBufferFull        = @"playbackBufferFull";
+NSString * const leaTracks                    = @"tracks";
+NSString * const leaPresentationSize          = @"presentationSize";
+
+/* AVPlayer keys */
+NSString * const leaRateKey                   = @"rate";
+NSString * const leaCurrentItem               = @"currentItem";
+NSString * const leaAirplay                   = @"externalPlaybackActive";
+
+/* PlayerItem context */
+observerContext(AVPlayerPlaybackStatusObservationContext);
+observerContext(AVPlayerPlaybackPlaybackEmptyObservationContext);
+observerContext(AVPlayerPlaybackPlaybackLikelyToKeepUpObservationContext);
+observerContext(AVPlayerPlaybackPlaybackBufferFullObservationContext);
+observerContext(AVPlayerPlaybackTracksObservationContext);
+
+/* Player context */
+observerContext(AVPlayerPlaybackCurrentItemObservationContext);
+observerContext(AVPlayerPlaybackRateObservationContext);
+observerContext(AVPlayerPlaybackAirPlayActiveObservationContext);
 
 @implementation playerManager
 static playerManager *defaultManager = nil;
@@ -25,17 +53,31 @@ static playerManager *defaultManager = nil;
 -(void)test
 {
     NSLog(@"lee playerManager test");
+//    baseSocket *tmp = new baseSocket();
+//    self.baseTemp = (void *)tmp;
+//    tmp->test();
+    
+    
+    
+//     NSLog(@"lee playerManager test:%d",self.baseTemp->na);
+    
 }
 
 - (void)createUI {
     //构建ui
+//    [self test];
     NSLog(@"lee player create ui");
     self.backView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 500, 500)];
     self.backView.backgroundColor = [UIColor clearColor];//clearColor
     [self.parentView addSubview:self.backView];
+    
+    
 }
 
 - (void)createPlayer {
+//    baseSocket *tmp1 = (baseSocket *)self.baseTemp;
+//
+//    tmp1->test();
     
     NSLog(@"lee player create player");
     // 初始化播放器item//
@@ -69,24 +111,24 @@ static playerManager *defaultManager = nil;
         return;
     }
     [self.playerItem addObserver:self
-                      forKeyPath:@"status"
+                      forKeyPath:LeaStatusKey
                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                         context:@"AVPlayerPlaybackStatusObservationContext"];
+                         context:AVPlayerPlaybackStatusObservationContext];
     
     [self.playerItem addObserver:self
-                      forKeyPath:@"playbackBufferEmpty"
+                      forKeyPath:leaPlaybackBufferEmpty
                          options:NSKeyValueObservingOptionNew
-                         context:@"AVPlayerPlaybackPlaybackEmptyObservationContext"];
+                         context:AVPlayerPlaybackPlaybackEmptyObservationContext];
     
     [self.playerItem addObserver:self
-                      forKeyPath:@"playbackLikelyToKeepUp"
+                      forKeyPath:leaPlaybackLikelyToKeepUp
                          options:NSKeyValueObservingOptionNew
-                         context:@"AVPlayerPlaybackPlaybackLikelyToKeepUpObservationContext"];
+                         context:AVPlayerPlaybackPlaybackLikelyToKeepUpObservationContext];
     
     [self.playerItem addObserver:self
-                      forKeyPath:@"playbackBufferFull"
+                      forKeyPath:leaPlaybackBufferFull
                          options:NSKeyValueObservingOptionNew
-                         context:@"AVPlayerPlaybackPlaybackBufferFullObservationContext"];
+                         context:AVPlayerPlaybackPlaybackBufferFullObservationContext];
     
     //    [self.playerItem addObserver:self
     //                  forKeyPath:kVOCurrentMediaSelection
@@ -94,9 +136,9 @@ static playerManager *defaultManager = nil;
     //                     context:AVPlayerPlaybackCurrentMediaSelectionObservationContext];
     
     [self.playerItem addObserver:self
-                      forKeyPath:@"tracks"
+                      forKeyPath:leaTracks
                          options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                         context:@"AVPlayerPlaybackTracksObservationContext"];
+                         context:AVPlayerPlaybackTracksObservationContext];
     
     
     /* When the player item has played to its end time we'll toggle
@@ -187,12 +229,12 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
     if (self.playerItem)
     {
         /* Remove existing player item key value observers and notifications. */
-        [self.playerItem removeObserver:self forKeyPath:@"status"];
-        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
-        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
-        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferFull"];
+        [self.playerItem removeObserver:self forKeyPath:LeaStatusKey];
+        [self.playerItem removeObserver:self forKeyPath:leaPlaybackBufferEmpty];
+        [self.playerItem removeObserver:self forKeyPath:leaPlaybackLikelyToKeepUp];
+        [self.playerItem removeObserver:self forKeyPath:leaPlaybackBufferFull];
         //        [self.playerItem removeObserver:self forKeyPath:kVOCurrentMediaSelection];
-        [self.playerItem removeObserver:self forKeyPath:@"tracks"];
+        [self.playerItem removeObserver:self forKeyPath:leaTracks];
         
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:AVPlayerItemDidPlayToEndTimeNotification
@@ -214,20 +256,20 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
      AVPlayer replaceCurrentItemWithPlayerItem: replacement will/did
      occur.*/
     [self.player addObserver:self
-                  forKeyPath:@"currentItem"
+                  forKeyPath:leaCurrentItem
                      options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                     context:@"AVPlayerPlaybackCurrentItemObservationContext"];
+                     context:AVPlayerPlaybackCurrentItemObservationContext];
     
     /* Observe the AVPlayer "rate" property to update the scrubber control. */
     [self.player addObserver:self
-                  forKeyPath:@"rate"
+                  forKeyPath:leaRateKey
                      options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
-                     context:@"AVPlayerPlaybackRateObservationContext"];
+                     context:AVPlayerPlaybackRateObservationContext];
     
     [self.player addObserver:self
-                  forKeyPath:@"externalPlaybackActive"
+                  forKeyPath:leaAirplay
                      options:NSKeyValueObservingOptionNew
-                     context:@"AVPlayerPlaybackAirPlayActiveObservationContext"];
+                     context:AVPlayerPlaybackAirPlayActiveObservationContext];
 }
 
 - (void)removePlayerObserver
@@ -236,9 +278,9 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
         return;
     }
     
-    [self.player removeObserver:self forKeyPath:@"rate"];
-    [self.player removeObserver:self forKeyPath:@"currentItem"];
-    [self.player removeObserver:self forKeyPath:@"externalPlaybackActive"];
+    [self.player removeObserver:self forKeyPath:leaRateKey];
+    [self.player removeObserver:self forKeyPath:leaCurrentItem];
+    [self.player removeObserver:self forKeyPath:leaAirplay];
 }
 
 
@@ -248,7 +290,7 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
                        context:(void*)context
 {
     /* AVPlayerItem "status" property value observer. */
-    if (context == @"AVPlayerPlaybackStatusObservationContext")
+    if (context == AVPlayerPlaybackStatusObservationContext)
     {
         AVPlayerStatus status = (AVPlayerStatus)[[change objectForKey:NSKeyValueChangeNewKey] integerValue];
         switch (status)
@@ -289,20 +331,20 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
                 break;
         }
     }
-    else if (context == @"AVPlayerPlaybackPlaybackEmptyObservationContext")
+    else if (context == AVPlayerPlaybackPlaybackEmptyObservationContext)
     {
 
-        if (object == self.playerItem && [path isEqualToString:@"playbackBufferEmpty"])
+        if (object == self.playerItem && [path isEqualToString:leaPlaybackBufferEmpty])
         {
             NSLog(@"lee playbackBufferEmpty--\n");
         }
-        else if (object == self.playerItem && ([path isEqualToString:@"playbackLikelyToKeepUp"] || [path isEqualToString:@"playbackBufferFull"]))
+        else if (object == self.playerItem && ([path isEqualToString:leaPlaybackLikelyToKeepUp] || [path isEqualToString:leaPlaybackBufferFull]))
         {
             NSLog(@"lee playbackLikelyToKeepUp--\n");
         }
     }
-    else if ((context == @"AVPlayerPlaybackPlaybackLikelyToKeepUpObservationContext")
-             || (@"AVPlayerPlaybackPlaybackBufferFullObservationContext" == context))
+    else if ((context == AVPlayerPlaybackPlaybackLikelyToKeepUpObservationContext)
+             || (AVPlayerPlaybackPlaybackBufferFullObservationContext == context))
     {
         
     }
@@ -310,12 +352,12 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
     {
 
     }
-    else if (context == @"AVPlayerPlaybackTracksObservationContext")
+    else if (context == AVPlayerPlaybackTracksObservationContext)
     {
         
     }
     /* AVPlayer "rate" property value observer. */
-    else if (context == @"AVPlayerPlaybackRateObservationContext")
+    else if (context == AVPlayerPlaybackRateObservationContext)
     {
         NSString *status = @"pause";
         float newRate = [change[NSKeyValueChangeNewKey] floatValue];
@@ -335,11 +377,11 @@ void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStri
         NSLog(@"Rate: %.1f -> %.1f",oldRate, newRate);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"AVPlayerPlaybackRateObservationContext" object:nil userInfo:@{@"data":status}];
     }
-    else if (context == @"AVPlayerPlaybackAirPlayActiveObservationContext")
+    else if (context == AVPlayerPlaybackAirPlayActiveObservationContext)
     {
        
     }
-    else if (context == @"AVPlayerPlaybackCurrentItemObservationContext")
+    else if (context == AVPlayerPlaybackCurrentItemObservationContext)
     {
         AVPlayerItem *newPlayerItem = [change objectForKey:NSKeyValueChangeNewKey];
         NSLog(@"%s", newPlayerItem.description.UTF8String);
