@@ -16,7 +16,8 @@
 		9E64ED7424C56721001765BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED7324C56721001765BE /* main.m */; };
 		9E64ED7E24C56721001765BE /* LeePlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED7D24C56721001765BE /* LeePlayerTests.m */; };
 		9E64ED8924C56721001765BE /* LeePlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED8824C56721001765BE /* LeePlayerUITests.m */; };
-		9E64ED9724C5693D001765BE /* playerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED9624C5693C001765BE /* playerManager.m */; };
+		9E64ED9724C5693D001765BE /* playerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED9624C5693C001765BE /* playerManager.mm */; };
+		9EA6B45824F6267D00EAE8F4 /* baseSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6B45624F6267D00EAE8F4 /* baseSocket.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,11 @@
 		9E64ED8424C56721001765BE /* LeePlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeePlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E64ED8824C56721001765BE /* LeePlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeePlayerUITests.m; sourceTree = "<group>"; };
 		9E64ED8A24C56721001765BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9E64ED9624C5693C001765BE /* playerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = playerManager.m; sourceTree = "<group>"; };
+		9E64ED9624C5693C001765BE /* playerManager.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = playerManager.mm; sourceTree = "<group>"; };
 		9E64ED9824C56980001765BE /* playerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = playerManager.h; sourceTree = "<group>"; };
+		9EA6B45624F6267D00EAE8F4 /* baseSocket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = baseSocket.cpp; sourceTree = "<group>"; };
+		9EA6B45724F6267D00EAE8F4 /* baseSocket.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; path = baseSocket.hpp; sourceTree = "<group>"; };
+		9EA6B45A24F6321900EAE8F4 /* AVPlayerString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerString.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		9E64ED6024C5671C001765BE /* LeePlayer */ = {
 			isa = PBXGroup;
 			children = (
+				9EA6B45924F6317400EAE8F4 /* include */,
 				9E64ED6124C5671C001765BE /* AppDelegate.h */,
 				9E64ED6224C5671C001765BE /* AppDelegate.m */,
 				9E64ED6424C5671C001765BE /* SceneDelegate.h */,
@@ -118,8 +123,9 @@
 				9E64ED6F24C56721001765BE /* LaunchScreen.storyboard */,
 				9E64ED7224C56721001765BE /* Info.plist */,
 				9E64ED7324C56721001765BE /* main.m */,
-				9E64ED9624C5693C001765BE /* playerManager.m */,
+				9E64ED9624C5693C001765BE /* playerManager.mm */,
 				9E64ED9824C56980001765BE /* playerManager.h */,
+				9EA6B45524F6262200EAE8F4 /* httpServer */,
 			);
 			path = LeePlayer;
 			sourceTree = "<group>";
@@ -140,6 +146,23 @@
 				9E64ED8A24C56721001765BE /* Info.plist */,
 			);
 			path = LeePlayerUITests;
+			sourceTree = "<group>";
+		};
+		9EA6B45524F6262200EAE8F4 /* httpServer */ = {
+			isa = PBXGroup;
+			children = (
+				9EA6B45624F6267D00EAE8F4 /* baseSocket.cpp */,
+				9EA6B45724F6267D00EAE8F4 /* baseSocket.hpp */,
+			);
+			path = httpServer;
+			sourceTree = "<group>";
+		};
+		9EA6B45924F6317400EAE8F4 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9EA6B45A24F6321900EAE8F4 /* AVPlayerString.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +296,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E64ED6924C5671C001765BE /* ViewController.m in Sources */,
+				9EA6B45824F6267D00EAE8F4 /* baseSocket.cpp in Sources */,
 				9E64ED6324C5671C001765BE /* AppDelegate.m in Sources */,
 				9E64ED7424C56721001765BE /* main.m in Sources */,
-				9E64ED9724C5693D001765BE /* playerManager.m in Sources */,
+				9E64ED9724C5693D001765BE /* playerManager.mm in Sources */,
 				9E64ED6624C5671C001765BE /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +471,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = LeePlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,6 +491,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5HF23TBGWX;
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				INFOPLIST_FILE = LeePlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
