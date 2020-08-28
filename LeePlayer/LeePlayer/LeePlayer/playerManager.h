@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, AVPlayerState) {
 @property (nonatomic, assign) AVPlayerState playerState;
 @property (nonatomic, assign) BOOL bStateLocked;
 
-//@property (nonatomic, assign) void  *baseTemp;
+@property (nonatomic, assign) void  *baseTemp;
 
 + (id)sharedInstance;
 

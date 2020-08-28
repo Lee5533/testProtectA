@@ -53,19 +53,22 @@ static playerManager *defaultManager = nil;
 -(void)test
 {
     NSLog(@"lee playerManager test");
-//    baseSocket *tmp = new baseSocket();
-//    self.baseTemp = (void *)tmp;
-//    tmp->test();
+    baseSocket *tmp = new baseSocket();
+    self.baseTemp = (void *)tmp;
+    tmp->test();
     
     
     
-//     NSLog(@"lee playerManager test:%d",self.baseTemp->na);
+     NSLog(@"lee playerManager test:%d",tmp->na);
     
+    delete tmp;
+    tmp = NULL;
+    self.baseTemp = NULL;
 }
 
 - (void)createUI {
     //构建ui
-//    [self test];
+    [self test];
     NSLog(@"lee player create ui");
     self.backView = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 500, 500)];
     self.backView.backgroundColor = [UIColor clearColor];//clearColor
