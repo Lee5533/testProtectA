@@ -25,7 +25,7 @@ public:
     void test();
     void start();
     void* listenClient();
-    static void* listenClient1();
+    static void* listenClient1(void * arg);
     
     int                m_hSocket;
     fd_set            m_fdsRead;

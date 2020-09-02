@@ -27,6 +27,8 @@ socketClient::~socketClient()
 }
 void socketClient::test()
 {
+    sleep(5);
+    printf("lee socketClient1:%d,nb:%d\n",na,nb);
     //创建套接字
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     

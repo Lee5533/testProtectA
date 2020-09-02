@@ -53,8 +53,6 @@ void socketServer::test()
     listen(m_hSocket, 20);
     //接收客户端请求
     
-//    printf("now tid is %d \n", gettid());
-//    printf("now tid is %d \n", GetCurrentThreadId());
     printf("main thread id is %p\n",pthread_self());
 
     start();
@@ -64,45 +62,33 @@ void socketServer::test()
 
 void socketServer::start()
 {
-    int i = 1;
-//    while (i < 6)
-//    {
     pthread_t tids;
 
-    int nRet = pthread_create(&tids, NULL, (void*(*)(void*))listenClient1(), NULL);
-//    int nRet = pthread_create(&tids[0], NULL, (void*(*)(void*))listenClient1(), NULL);
+    int nRet = pthread_create(&tids, NULL, (void*(*)(void*))listenClient1, this);
     
-    printf("Lee pthread_create:--->%d... %d", i, nRet);
+    printf("socketServer pthread_create:--->%d", nRet);
 
     if (nRet != 0)
     {
         printf("pthread_create error: error_code= %d",nRet);
     }
-//        i++;
-//    }
+
     
 }
-void* socketServer::listenClient1()
+void* socketServer::listenClient1(void * arg)
 {
-    int i = 0;
-    printf("listenClient1 thread id is %p\n", pthread_self());
-    while (1) {
-        printf("lee xunhuan:%d\n",i++);
-        sleep(2);
-    }
+    //https://stackoverflow.com/questions/1151582/pthread-function-from-a-class
+    socketServer * temp =  (socketServer *)arg;
+    temp->listenClient();
+    return 0;
 }
+
 void* socketServer::listenClient()
 {
-//    int i = 0;
-//    while (1) {
-//        printf("lee xunhuan:%d\n",i++);
-//        sleep(2);
-//    }
-    
     //监听client
-    
     int clnt_sock;
-    
+    sleep(1);
+    printf("listenClient thread id is %p\n",pthread_self());
     while (1)
     {
         
@@ -134,10 +120,16 @@ void* socketServer::listenClient()
         {
             if (FD_ISSET (m_hSocket, &m_fdsRead))
             {
+                printf("读取数据。。。.\n");
                 // 这里处理Read事件
                 struct sockaddr_in clnt_addr;
                 socklen_t clnt_addr_size = sizeof(clnt_addr);
                 clnt_sock = accept(m_hSocket, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
+                
+                //向客户端发送数据
+                char str[] = "http://c.biancheng.net/socket/";
+                write(clnt_sock , str, sizeof(str));
+
             }
 
             if (FD_ISSET (m_hSocket, &m_fdsWrite))
@@ -153,12 +145,9 @@ void* socketServer::listenClient()
         }
     }
     
-    //向客户端发送数据
-     char str[] = "http://c.biancheng.net/socket/";
-     write(clnt_sock , str, sizeof(str));
-    
+        
      //关闭套接字
-     close(m_hSocket);
-     close(m_hSocket);
+//     close(m_hSocket);
+//     close(m_hSocket);
     
 }
