@@ -6,4 +6,159 @@
 //  Copyright © 2020 Lee Li. All rights reserved.
 //
 
+
 #include "socketServer.hpp"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#include "unistd.h"
+#include <pthread.h>
+using namespace std;
+socketServer::socketServer(void)
+:na(10)
+,nb(20)
+{
+    printf("lee baseSocket1:%d,nb:%d\n",na,nb);
+    m_tmout.tv_sec = 0;
+    m_tmout.tv_usec = 20000;
+
+}
+socketServer::~socketServer()
+{
+     
+}
+void socketServer::test()
+{
+    printf("lee baseSocket:%d,nb:%d\n",na,nb);
+
+    //创建套接字
+    m_hSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    
+    //将套接字和IP、端口绑定
+    struct sockaddr_in serv_addr;
+    memset(&serv_addr, 0, sizeof(serv_addr));  //每个字节都用0填充
+    serv_addr.sin_family = AF_INET;  //使用IPv4地址
+    
+    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+//    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");  //具体的IP地址
+    serv_addr.sin_port = htons(1234);  //端口
+    
+    bind(m_hSocket, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
+    //进入监听状态，等待用户发起请求
+    listen(m_hSocket, 20);
+    //接收客户端请求
+    
+//    printf("now tid is %d \n", gettid());
+//    printf("now tid is %d \n", GetCurrentThreadId());
+    printf("main thread id is %p\n",pthread_self());
+
+    start();
+
+    
+}
+
+void socketServer::start()
+{
+    int i = 1;
+//    while (i < 6)
+//    {
+    pthread_t tids;
+
+    int nRet = pthread_create(&tids, NULL, (void*(*)(void*))listenClient1(), NULL);
+//    int nRet = pthread_create(&tids[0], NULL, (void*(*)(void*))listenClient1(), NULL);
+    
+    printf("Lee pthread_create:--->%d... %d", i, nRet);
+
+    if (nRet != 0)
+    {
+        printf("pthread_create error: error_code= %d",nRet);
+    }
+//        i++;
+//    }
+    
+}
+void* socketServer::listenClient1()
+{
+    int i = 0;
+    printf("listenClient1 thread id is %p\n", pthread_self());
+    while (1) {
+        printf("lee xunhuan:%d\n",i++);
+        sleep(2);
+    }
+}
+void* socketServer::listenClient()
+{
+//    int i = 0;
+//    while (1) {
+//        printf("lee xunhuan:%d\n",i++);
+//        sleep(2);
+//    }
+    
+    //监听client
+    
+    int clnt_sock;
+    
+    while (1)
+    {
+        
+        int nRC = 0;
+        
+        FD_ZERO(&m_fdsRead);
+        FD_SET(m_hSocket, &m_fdsRead);
+
+        FD_ZERO(&m_fdsWrite);
+        FD_SET(m_hSocket, &m_fdsWrite);
+
+        FD_ZERO(&m_fdsExcept);
+        FD_SET(m_hSocket, &m_fdsExcept);
+
+        nRC = select (m_hSocket + 1 ,&m_fdsRead, &m_fdsWrite, &m_fdsExcept, &m_tmout);
+        
+        if (nRC < 0)
+        {
+            perror("select error");
+            exit(-1);
+        }
+        else if (0 == nRC)
+        {
+            printf("无数据输入，等待超时.\n");
+            sleep(1);
+            
+        }
+        else
+        {
+            if (FD_ISSET (m_hSocket, &m_fdsRead))
+            {
+                // 这里处理Read事件
+                struct sockaddr_in clnt_addr;
+                socklen_t clnt_addr_size = sizeof(clnt_addr);
+                clnt_sock = accept(m_hSocket, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
+            }
+
+            if (FD_ISSET (m_hSocket, &m_fdsWrite))
+            {
+                 // 这里处理Write事件
+            }
+
+            if (FD_ISSET (m_hSocket, &m_fdsExcept))
+            {
+                // 这里处理Except事件
+                printf("m_fdsExcept\n");
+            }
+        }
+    }
+    
+    //向客户端发送数据
+     char str[] = "http://c.biancheng.net/socket/";
+     write(clnt_sock , str, sizeof(str));
+    
+     //关闭套接字
+     close(m_hSocket);
+     close(m_hSocket);
+    
+}

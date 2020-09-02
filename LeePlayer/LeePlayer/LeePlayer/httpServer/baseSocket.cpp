@@ -7,6 +7,9 @@
 //
 
 #include "baseSocket.hpp"
+#include "socketClient.hpp"
+#include "socketServer.hpp"
+
 baseSocket::baseSocket(void)
 :na(10)
 ,nb(20)
@@ -19,5 +22,10 @@ baseSocket::~baseSocket()
 }
 void baseSocket::test()
 {
+    socketServer * sS = new socketServer();
+    socketClient * sC = new socketClient();
+    sS->test();
+    sC->test();
+    
     printf("lee baseSocket:%d,nb:%d\n",na,nb);
 }

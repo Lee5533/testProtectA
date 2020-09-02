@@ -11,4 +11,16 @@
 
 #include <stdio.h>
 
+class socketClient
+{
+public:
+    socketClient(void);
+    virtual ~socketClient(void);
+    
+    int na;
+    int nb;
+    
+    void test();
+    
+};
 #endif /* socketClient_hpp */
