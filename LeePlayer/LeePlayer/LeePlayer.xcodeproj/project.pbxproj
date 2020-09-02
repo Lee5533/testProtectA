@@ -17,7 +17,10 @@
 		9E64ED7E24C56721001765BE /* LeePlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED7D24C56721001765BE /* LeePlayerTests.m */; };
 		9E64ED8924C56721001765BE /* LeePlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED8824C56721001765BE /* LeePlayerUITests.m */; };
 		9E64ED9724C5693D001765BE /* playerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9E64ED9624C5693C001765BE /* playerManager.mm */; };
+		9E89078024FF40E2002A0750 /* libpthread.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E89077F24FF40E2002A0750 /* libpthread.tbd */; };
 		9EA6B45824F6267D00EAE8F4 /* baseSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EA6B45624F6267D00EAE8F4 /* baseSocket.cpp */; };
+		9EFA2D4C24FE2C8500CF075F /* socketServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EFA2D4A24FE2C8500CF075F /* socketServer.cpp */; };
+		9EFA2D4F24FE2CBB00CF075F /* socketClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EFA2D4D24FE2CBB00CF075F /* socketClient.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +61,14 @@
 		9E64ED8A24C56721001765BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E64ED9624C5693C001765BE /* playerManager.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = playerManager.mm; sourceTree = "<group>"; };
 		9E64ED9824C56980001765BE /* playerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = playerManager.h; sourceTree = "<group>"; };
+		9E89077F24FF40E2002A0750 /* libpthread.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libpthread.tbd; path = usr/lib/libpthread.tbd; sourceTree = SDKROOT; };
 		9EA6B45624F6267D00EAE8F4 /* baseSocket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = baseSocket.cpp; sourceTree = "<group>"; };
 		9EA6B45724F6267D00EAE8F4 /* baseSocket.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; path = baseSocket.hpp; sourceTree = "<group>"; };
 		9EA6B45A24F6321900EAE8F4 /* AVPlayerString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayerString.h; sourceTree = "<group>"; };
+		9EFA2D4A24FE2C8500CF075F /* socketServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = socketServer.cpp; sourceTree = "<group>"; };
+		9EFA2D4B24FE2C8500CF075F /* socketServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = socketServer.hpp; sourceTree = "<group>"; };
+		9EFA2D4D24FE2CBB00CF075F /* socketClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = socketClient.cpp; sourceTree = "<group>"; };
+		9EFA2D4E24FE2CBB00CF075F /* socketClient.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = socketClient.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E89078024FF40E2002A0750 /* libpthread.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +104,7 @@
 				9E64ED7C24C56721001765BE /* LeePlayerTests */,
 				9E64ED8724C56721001765BE /* LeePlayerUITests */,
 				9E64ED5F24C5671C001765BE /* Products */,
+				9E89077E24FF40E2002A0750 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,11 +158,23 @@
 			path = LeePlayerUITests;
 			sourceTree = "<group>";
 		};
+		9E89077E24FF40E2002A0750 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E89077F24FF40E2002A0750 /* libpthread.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9EA6B45524F6262200EAE8F4 /* httpServer */ = {
 			isa = PBXGroup;
 			children = (
 				9EA6B45624F6267D00EAE8F4 /* baseSocket.cpp */,
 				9EA6B45724F6267D00EAE8F4 /* baseSocket.hpp */,
+				9EFA2D4A24FE2C8500CF075F /* socketServer.cpp */,
+				9EFA2D4B24FE2C8500CF075F /* socketServer.hpp */,
+				9EFA2D4D24FE2CBB00CF075F /* socketClient.cpp */,
+				9EFA2D4E24FE2CBB00CF075F /* socketClient.hpp */,
 			);
 			path = httpServer;
 			sourceTree = "<group>";
@@ -296,8 +318,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E64ED6924C5671C001765BE /* ViewController.m in Sources */,
+				9EFA2D4F24FE2CBB00CF075F /* socketClient.cpp in Sources */,
 				9EA6B45824F6267D00EAE8F4 /* baseSocket.cpp in Sources */,
 				9E64ED6324C5671C001765BE /* AppDelegate.m in Sources */,
+				9EFA2D4C24FE2C8500CF075F /* socketServer.cpp in Sources */,
 				9E64ED7424C56721001765BE /* main.m in Sources */,
 				9E64ED9724C5693D001765BE /* playerManager.mm in Sources */,
 				9E64ED6624C5671C001765BE /* SceneDelegate.m in Sources */,
