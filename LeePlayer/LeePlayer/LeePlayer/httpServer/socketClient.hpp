@@ -21,6 +21,9 @@ public:
     int nb;
     
     void test();
+    void start();
+    static void* connectServer(void* arg);
+    void connectThreadLoop();
     
 };
 #endif /* socketClient_hpp */

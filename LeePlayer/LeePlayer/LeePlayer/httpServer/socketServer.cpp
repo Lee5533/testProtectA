@@ -146,8 +146,8 @@ void* socketServer::listenClient()
     }
     
         
-     //关闭套接字
-//     close(m_hSocket);
-//     close(m_hSocket);
+//     关闭套接字
+     close(clnt_sock);
+     close(m_hSocket);
     
 }
