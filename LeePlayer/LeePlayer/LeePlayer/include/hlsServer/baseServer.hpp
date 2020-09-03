@@ -10,5 +10,20 @@
 #define baseServer_hpp
 
 #include <stdio.h>
+#include "listenSocket.hpp"
 
+class baseServer
+{
+public:
+    baseServer(void);
+    virtual ~baseServer(void);
+    
+    int na;
+    int nb;
+    
+    void start();
+    listenSocket* m_plistenSocket;
+private:
+    
+};
 #endif /* baseServer_hpp */

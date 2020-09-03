@@ -10,5 +10,18 @@
 #define listenSocket_hpp
 
 #include <stdio.h>
+class listenSocket
+{
+public:
+    listenSocket(void * hUserData, int nPortNum);
+    virtual ~listenSocket(void);
+    
+    int na;
+    int nb;
+    
+    void start();
+private:
+    
+};
 
 #endif /* listenSocket_hpp */
