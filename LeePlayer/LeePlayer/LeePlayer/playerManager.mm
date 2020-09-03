@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "playerManager.h"
-#import "baseSocket.hpp"
+//#import "baseSocket.hpp"
+#include "baseServer.hpp"
 
 #define observerContext(context) static void *context = &context;
 
@@ -52,17 +53,21 @@ static playerManager *defaultManager = nil;
 }
 -(void)test
 {
+    /*
     NSLog(@"lee playerManager test");
     baseSocket *tmp = new baseSocket();
     self.baseTemp = (void *)tmp;
     tmp->test();
+     */
     
+    baseServer *temp = new baseServer();
+    self.baseTemp = (void *)temp;
+    temp->start();
     
+    NSLog(@"lee playerManager test:%d",temp->na);
     
-     NSLog(@"lee playerManager test:%d",tmp->na);
-    
-    delete tmp;
-    tmp = NULL;
+    delete temp;
+    temp = NULL;
     self.baseTemp = NULL;
 }
 
