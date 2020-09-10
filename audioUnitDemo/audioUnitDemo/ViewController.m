@@ -123,6 +123,7 @@ static OSStatus playbackCallback(void *inRefCon,
     // Notes: ioData contains buffers (may be more than one!)
     // Fill them up as much as you can. Remember to set the size value in each buffer to match how
     // much data is in the buffer.
+    NSLog(@"playbackCallback Error %ld");
     return noErr;
 }
 
